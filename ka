@@ -1,0 +1,30 @@
+[33mcommit 7ef5f762f3240c2d73fd4a8a68a6cb2fb8312859[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 8982ca8 4ca81a2
+Author: Panshin Artyom <panshin.av@phystech.edu>
+Date:   Thu Mar 11 18:01:18 2021 +0300
+
+    Merge branch 'spain'
+
+[33mcommit 4ca81a23e29d551852e91cc0b69dabe4982518a4[m
+Author: Panshin Artyom <panshin.av@phystech.edu>
+Date:   Thu Mar 11 17:56:08 2021 +0300
+
+    Hola
+
+[33mcommit 8982ca8257c75512975c5a9baa7aeca9fb5d474f[m
+Author: Panshin Artyom <panshin.av@phystech.edu>
+Date:   Thu Mar 11 17:49:52 2021 +0300
+
+    Ciao
+
+[33mcommit 1f97ab1d1f68b1d79537ffcba66d206420d75ea1[m
+Author: Panshin Artyom <panshin.av@phystech.edu>
+Date:   Thu Mar 11 17:41:08 2021 +0300
+
+    Msg
+
+[33mcommit af86f8124afa3669d20c73c5afdd45efa8ada921[m
+Author: Panshin Artyom <panshin.av@phystech.edu>
+Date:   Thu Mar 11 17:36:24 2021 +0300
+
+    Добавил первый файл
