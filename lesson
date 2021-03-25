@@ -1,0 +1,100 @@
+import RPi.GPIO as GPIO
+import time
+
+#----------------------------------------------------
+GPIO.setmode(GPIO.BCM)
+chan_list = [24, 25, 8, 7, 12, 16, 20, 21]
+GPIO.setup(chan_list, GPIO.OUT)
+#----------------------------------------------------
+
+def pin_to_number(led):
+    return chan_list[led] 
+
+#----------------------------------------------------
+
+def lightUp(ledNumber, period):
+    ledNumber = pin_to_number(ledNumber)
+    GPIO.output(ledNumber, 1)
+    time.sleep(period)
+    GPIO.output(ledNumber, 0)
+    GPIO.cleanup(ledNumber)
+
+#------------------------------------------------------
+def deblink(ledNumber, blinkCount, blinkPeriod):
+    ledNumber = pin_to_number(ledNumber)
+    for i in range(0, blinkCount):  
+        GPIO.output(ledNumber, 0)
+        time.sleep(blinkPeriod)
+        GPIO.output(ledNumber, 1)
+        time.sleep(blinkPeriod)
+
+#------------------------------------------------------
+def blink(ledNumber, blinkCount, blinkPeriod):
+    ledNumber = pin_to_number(ledNumber)
+    for i in range(0, blinkCount):  
+        GPIO.output(ledNumber, 1)
+        time.sleep(blinkPeriod)
+        GPIO.output(ledNumber, 0)
+        time.sleep(blinkPeriod)
+      
+#------------------------------------------------------------
+def runningLight(count, period):
+    for j in range(0, count):
+        for i in range(0, 8 ):
+            blink(i, 1, period)
+
+#----------------------------------------------------------
+
+def runningDark(count, period):
+    for i in range(0, 8) :
+        GPIO.output(pin_to_number(i), 1)
+    for j in range(0, count):
+        for i in range (0, 8):
+            deblink(i, 1 ,period) 
+#runningDark(3, 0.1)
+#for i in range(0, 8) :
+#        GPIO.output(pin_to_number(i), 0)
+#-------------------------------------------------------------
+
+def decToBinList(decNumber):
+    a = [0, 0, 0, 0, 0, 0, 0, 0]
+    for i in range(0, 8):
+        if(decNumber >> i):
+            a[7-i] = 1
+    return a
+
+#--------------------------------------------------------------
+
+def lightNumber(number):
+    a = decToBinList(number)
+    for i in range(0,8):
+        GPIO.output(pin_to_number(i), a[7-i])
+    time.sleep(0.1)
+    for i in range(0, 8) :
+        GPIO.output(pin_to_number(i), 0)
+
+#lightNumber(5)
+#for i in range(0, 8) :
+#        GPIO.output(pin_to_number(i), 0)
+#---------------------------------------------------------------
+
+
+def runningPattern(pattern, direction):
+    lightNumber(pattern)
+    while(2>1):
+        lightNumber(pattern)
+        time.sleep(1)
+        #for i in range(0, 8) :
+         #   GPIO.output(pin_to_number(i), 0)
+        if(direction > 0):
+            b = pattern % 2
+            pattern = pattern >> 1
+            pattern = pattern + b * 128
+        if(direction < 0):
+            b = pattern % 128
+            pattern =pattern << 1
+            pattern = pattern + b * 2    
+        
+runningPattern(5, -2)
+#for i in range(0, 8) :
+#      GPIO.output(pin_to_number(i), 0)
